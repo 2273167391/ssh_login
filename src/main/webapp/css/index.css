@@ -1,0 +1,190 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+@-webkit-keyframes animate-cloud{
+	from{background-position:600px 100%;}
+	to{background-position:0 100%;}
+}
+
+@-moz-keyframes animate-cloud{
+	from{background-position:600px 100%;}
+	to{background-position:0 100%;}
+}
+@-ms-keyframes animate-cloud{
+	from{background-position:600px 100%;}
+	to{background-position:0 100%;}
+}
+@-o-keyframes animate-cloud{
+	from{background-position:600px 100%;}
+	to{background-position:0 100%;}
+}
+
+html{height:100%;}
+
+body{
+	font-size: 16px;
+	font-family: 'Courier New',"Arial","黑体","Miriam Fixed","微软雅黑";
+	background:url('../images/cloud.png') 0 bottom repeat-x #049ec4;
+	-webkit-animation:animate-cloud 20s linear infinite;
+	-moz-animation:animate-cloud 20s linear infinite;
+	-ms-animation:animate-cloud 20s linear infinite;
+	-o-animation:animate-cloud 20s linear infinite;
+	animation:animate-cloud 20s linear infinite;
+	height:auto;
+	width:100%;
+}
+
+#login_main {
+	margin: 12% auto;
+	width: 330px;
+	background:#ffffff;
+	border-radius:8px;
+	box-shadow:2px 2px 5px 0px #02657E;
+	padding-bottom: 10px;
+}
+
+#login_main .login_title{
+	color:#FFFFFF;
+	background:#19B4EA;
+	line-height: 50px;
+	font-size: 25px;
+	text-indent: 20px;
+	border-top-left-radius:7px;
+	border-top-right-radius:7px;
+}
+
+ul {
+	width:255px;
+	list-style: none;
+	margin: 20px auto;
+	border:2.5px solid #CCCCCC;
+	border-radius:8px;
+}
+
+li{
+	height:40px;
+	line-height:40px;
+	border-bottom:1px solid #CCCCCC;
+	width: 100%;
+	clear: none;
+}
+
+li:nth-child(1),li:nth-child(2),li:nth-child(3){
+	display: inline-block;
+	background:url('../images/user.png') no-repeat 7px center;
+}
+
+li:nth-child(2){
+	background-image: url('../images/pwd.png');
+}
+
+li:nth-child(3){
+	background-image: url('../images/code.png');
+	border:0px;
+}
+
+label.error {
+	font-size: 13px;
+	background: #e64444;
+	padding: 4px 6px;
+	color: #FFFFFF;
+	position: relative;
+	float:right;
+	border-radius: 3px;
+	display:inline-block;
+	line-height:20px;
+	z-index: 999;
+	top:-34px;
+	box-shadow:0px 0px 2px 0px #E64444;
+}
+label.error:nth-last-child(2){
+	top:6px;
+}
+label.error::before {
+	content: url("../images/left-triangle.png");
+	position:absolute;
+	left:-12px;
+	top:5px;
+	z-index: 999;
+}
+
+.codeImg{
+	position: absolute;
+	margin-left: 10px;
+	margin-top:5px;
+}
+
+input[type='text'],input[type='password']{
+	height:34px;
+	margin-left: 45px;
+	outline: none;
+	font-weight: bold;
+	font-family: 'Courier New',"Arial","黑体","Miriam Fixed";
+	width: 207px;
+	border:0px;
+	color:#888888;
+	line-height: 35px;
+}
+
+input[name='code']{
+	width:90px;
+}
+
+.login_sub{
+	width:255px;
+	margin: 0px auto;
+}
+
+input[type='submit'],input[type='button']{
+	border:0px;
+	background-position:15px center;
+	background-repeat:no-repeat;
+	padding-top:8px ;
+	padding-left:40px;
+	padding-bottom:8px;
+	color:#FFFFFF;
+	font-size:20px;
+	letter-spacing:10px;
+	font-weight:bold;
+	border-radius:5px;
+	width:122px;
+	cursor: pointer;
+}
+
+input[type='submit']{
+	background-color:#3F464E;
+	background-image:url(../images/login.png);
+}
+
+input[type='button']{
+	background-color:#ea8010;
+	background-image:url(../images/register.png);
+	background-size:27px;
+}
+
+input[type='button']:hover{
+	background-color: #F09029;
+}
+
+input[type='submit']:hover{
+	background-color: #4D5255;
+}
+
+
+.login_foot{
+	color:#6F6F6F;
+	font-size:13px;
+	text-align:center;
+	padding: 30px 0px;
+}
+
+.login_prompt{
+	background:#F52121;
+	position: absolute;
+	color:white;
+	padding: 5px 10px;
+	font-size:12px;
+	display: none;
+}

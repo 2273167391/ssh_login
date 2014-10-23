@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>用户注册</title>
+<link rel="stylesheet" type="text/css" href="../css/register.css"/>
+<script type="text/javascript" src="../js/jquery-2.1.1.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="../js/jquery.validate.min.js" charset="UTF-8"></script>
+<script type="text/javascript" charset="UTF-8">
+	$(document).ready(function(){
+		init();
+		$("#registerForm").validate({
+			onkeyup:function(element){$(element).valid();},
+			errorPlacement:function(error,element){
+				error.appendTo(element.parent());
+			},
+			rules:{
+				"user.userName":{
+					required:true,
+					remote:{
+						type:"post",
+						url:"users/users!checkUserName.do",
+						data:{username:function(){return $("#username").val();}},
+						dataType:"json",
+						dataFilter:function(data,type){
+							data=jQuery.parseJSON(data);//将字符串转为JSON数据
+							if(data.result==1){return true;}else{return false;}
+						}
+					}
+				},
+				"user.password":{
+					required:true,
+					minlength:6
+				},
+				"confirm_pwd":{
+					equalTo:"#password"
+				},
+				"user.trueName":"required",
+				"user.phone":{
+					required:true,
+					checkPhone:true
+				},
+				"user.email":{
+					required:true,
+					email:true
+				},
+				"user.birthday":{
+					required:true,
+					dateISO:true
+				},
+				"code":"required"
+			},
+			messages:{
+				"user.userName":{
+					required:"用户名不能为空",
+					remote:"用户名已被使用"
+				},
+				"user.password":{
+					required:"密码不能为空",
+					minlength:"密码长度不能小于{0}个字符"
+				},
+				"confirm_pwd":{
+					equalTo:"两次密码输入不一致"
+				},
+				"user.trueName":"真实姓名不能为空",
+				"user.phone":{
+					required:"手机号码不能为空"
+				},
+				"user.email":{
+					required:"电子邮箱不能为空",
+					email:"电子邮箱格式错误"
+				},
+				"user.birthday":{
+					required:"出生日期不能为空",
+					dateISO:"出生日期格式错误"
+				},
+				"code":"验证码不能为空"
+			},
+			
+			submitHandler:function(form){
+				alert("");
+			}
+		});
+		
+	});
+	
+	//自定义验证手机号码
+	jQuery.validator.addMethod("checkPhone",function(value,element){
+		var regPhone=/^[1][345678][0-9]{9}$/;
+		if(regPhone.test(value)){return true;}else{return false;}
+	},"手机号码格式错误");
+	
+	//初始化
+	function init(){
+		$("img").attr("src","../validateCode?time="+new Date().getTime());//设置验证码
+		$("img").bind("click",function(){
+			$(this).attr("src","../validateCode?time="+new Date().getTime());
+		});
+	}
+</script>
+</head>
+<body>
+	<div id="register">
+		<form action="" method="post" id="registerForm">
+			<ul>
+				<li>
+					<label>用户名：</label>
+					<input type="text" name="user.userName" id="username"/>
+				</li>
+				<li>
+					<label>密码：</label>
+					<input type="password" name="user.password" id="password"/>
+				</li>
+				<li>
+					<label>确认密码：</label>
+					<input type="password" name="confirm_pwd"/>
+				</li>
+				<li>
+					<label>真实姓名：</label>
+					<input type="text" name="user.trueName"/>
+				</li>
+				<li>
+					<label>性别：</label>
+					<input type="radio" name="user.sex" value="1" checked="checked"/>&nbsp;男&nbsp;
+					<input type="radio" name="user.sex" value="0"/>&nbsp;女
+				</li>
+				
+				<li>
+					<label>联系方式：</label>
+					<input type="text" name="user.phone"/>
+				</li>
+				<li>
+					<label>电子邮箱：</label>
+					<input type="text" name="user.email"/>
+				</li>
+				<li>
+					<label>出生日期：</label>
+					<input type="text" name="user.birthday" />
+				</li>
+				<li>
+					<label>验证码：</label>
+					<input type="text" name="code"/><img src="" class="registerImg"/>
+				</li>
+				<li>
+					<input type="submit" value="注册"/>
+				</li>
+			</ul>
+		</form>
+	</div>
+</body>
+</html>

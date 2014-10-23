@@ -1,0 +1,63 @@
+*{margin:0px;padding:0px;}
+#register{
+	margin:10% auto;
+	width:600px;
+	border:1px solid #cccccc;
+}
+
+#register ul{
+	list-style:none;
+	width:85%;
+	margin:20px auto;
+}
+
+#register li{
+	height:40px;
+	line-height: 40px;
+}
+
+#register li label:nth-child(1){
+	width:80px;
+	display: inline-block;
+}
+
+#register input[type='text'],input[type='password']{
+	height:30px;
+	width:210px;
+	outline: none;
+}
+
+#register input[name='code']{
+	width:100px;
+}
+
+#register .registerImg{
+	position: absolute;
+	margin-left: 10px;
+	margin-top: 5px;
+	z-index:-1;
+}
+
+#register label.error {
+	font-size: 13px;
+	background: #E64444;
+	padding: 4px 6px;
+	color: #FFFFFF;
+	position: relative;
+	border-radius: 3px;
+	display:inline-block;
+	line-height:20px;
+	box-shadow:0px 0px 2px 0px #E64444;
+	margin-left:10px;
+}
+
+#register li:nth-last-child(2) label.error{
+	margin-left:120px;
+}
+
+#register label.error::before {
+	content: url("../images/left-triangle.png");
+	position:absolute;
+	left:-13px;
+	top:5px;
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>用户信息</title>
+</head>
+<body>
+	当前登录信息：<br/>
+	用户名：${user.userName!''}<br/>
+	真实姓名：${user.trueName!''}<br/>
+	出生日期：${user.birthday!''}<br/>
+	性别：<#if user.sex==1>男<#else>女</#if><br/>
+	联系方式：${user.phone!''}<br/>
+	电子邮箱：${user.email!''}<br/>
+	创建时间：${user.cTime!''}<br/>
+	登录时间：${user.lTime!''}<br/>
+</body>
+</html>
